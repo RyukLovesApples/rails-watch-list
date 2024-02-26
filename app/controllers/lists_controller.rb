@@ -5,11 +5,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @movies = Movie.all
-    @bookmark = Bookmark.all
-    # @bookmark = Bookmark.find()
-    raise
-
+    @bookmark = Bookmark.new
   end
 
   def new
@@ -18,7 +14,6 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.movies = @movies
     @list.save
     # No need for app/views/restaurants/create.html.erb
     redirect_to list_path(@list)
